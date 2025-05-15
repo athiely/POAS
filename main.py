@@ -7,11 +7,12 @@ from datetime import date
 acervo:List[Livro]=[]
 usuarios:List[Usuario]=[]
 emprestimos:List[Emprestimo]=[]
+
 app = FastAPI()
 
 @app.post('/livros', response_model=Livro)
 def cadastrar_livro(livro:Livro):
-    livro.uuid = uuid.uuid4()
+    livro.uuid = str(uuid.uuid4())
     acervo.append(livro)
     return livro
 
@@ -28,10 +29,10 @@ def listar_livros(titulo:str):
     
 @app.post("/usuarios", response_model=Usuario)
 def cadastrar_usuario(usuario:Usuario):
-    usuario.uuid = uuid.uuid4()
+    usuario.uuid = str(uuid.uuid4())
     usuarios.append(usuario)
     return usuario 
-@app.post("/usuarios", response_model=Emprestimo)
+@app.post("/emprestimo", response_model=Emprestimo)
 def emprestimo(usuario:str, livro:str, data_emprestimo:date, data_devolucao:date):
     user = None
     book = None
