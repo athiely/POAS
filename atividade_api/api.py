@@ -28,3 +28,5 @@ def criar_livro(livro:Livro):
     livros.append(livro)
     return livro
     raise HTTPException(404,"Não localizado")
+
+# athiely & chatgpt
